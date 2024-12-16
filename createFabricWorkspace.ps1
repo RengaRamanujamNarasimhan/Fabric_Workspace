@@ -5,6 +5,8 @@ Param($pcpName,$pwspName)
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
 Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
+Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
+
 #Connect to PowerBI Services
 Connect-PowerBIServiceAccount
 
