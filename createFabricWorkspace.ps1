@@ -17,7 +17,7 @@ $cpName = $pcpName
 
 #Get the Capacity ID based on capacity name supplied and assign it to a variable
 Try {
-$cpID = (Get-PowerBICapacity -Scope Organization | Where-Object { $_.DisplayName -Eq $cpName -and $_.State -Eq "Active" } | Select-Object -ExpandProperty Id).ToString()
+$cpID = (Get-PowerBICapacity | Where-Object { $_.DisplayName -Eq $cpName -and $_.State -Eq "Active" } | Select-Object -ExpandProperty Id).ToString()
 }
 Catch {
 	Write-Error 'The capacity does not exist. This could be because the capacity is not Active or you do not have a capacity administartor permissions.' 
