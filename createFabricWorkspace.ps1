@@ -34,5 +34,5 @@ New-PowerBIWorkspace -Name $wspName
 $wspID = (Get-PowerBIWorkspace -Name $wspName | Select-Object -ExpandProperty Id).ToString()
 
 #assign the capacity to the workspace
-Set-PowerBIWorkspace -Id $wspID -CapacityId $cpID
+Set-PowerBIWorkspace -Scope Organization -Id $wspID -CapacityId $cpID
 
