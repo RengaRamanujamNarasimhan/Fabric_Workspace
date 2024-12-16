@@ -1,4 +1,4 @@
-Param($pwspName,$pcpName)
+Param($pcpName,$pwspName)
 
 
 #Install the required Modules
