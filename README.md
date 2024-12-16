@@ -3,7 +3,7 @@ Param($pwspName,$pcpName)
 
 #Install the required Modules
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
+Install-Module -Name MicrosoftPowerBIMgmt -Force -WarningAction SilentlyContinue
 
 Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
