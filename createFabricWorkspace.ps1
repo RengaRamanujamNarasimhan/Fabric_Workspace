@@ -3,7 +3,7 @@ Param($pcpName,$pwspName)
 
 #Install the required Modules
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-Install-Module -Name MicrosoftPowerBIMgmt -Force -WarningAction SilentlyContinue
+Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
 Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
@@ -36,3 +36,4 @@ $wspID = (Get-PowerBIWorkspace -Name $wspName | Select-Object -ExpandProperty Id
 #assign the capacity to the workspace
 Set-PowerBIWorkspace -Scope Organization -Id $wspID -CapacityId $cpID
 
+Write-Output $wspID
