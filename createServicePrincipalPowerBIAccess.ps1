@@ -2,7 +2,9 @@ Param($pservicePrincipal)
 
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
 
-Import-Module Az.Resources -Force
+Update-Module -Name Az -Force
+
+Install-Module Az.Resources -Force
 Install-Module -Name Az.Accounts -Force -AllowClobber
 
 #Create a Service Principal for login access
