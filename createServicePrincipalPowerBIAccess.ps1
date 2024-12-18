@@ -1,11 +1,8 @@
 Param($pservicePrincipal)
 
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-
 Update-Module -Name Az -Force
 
-Install-Module Az.Resources -Force
-Install-Module -Name Az.Accounts -Force -AllowClobber
 
 #Create a Service Principal for login access
 $sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
