@@ -1,6 +1,7 @@
+Param($pservicePrincipal)
 
 #Create a Service Principal for login access
-$sp = New-AzADServicePrincipal -DisplayName 'AppSystechFabricBIaccess'
+$sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
 
 Write-Host "Service Principal Created:"
 Write-Output $sp
