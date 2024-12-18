@@ -1,6 +1,8 @@
 Param($pservicePrincipal)
 
+Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
 Import-Module Az.Resources -Force
+Import-Module Az.Account -Force
 
 #Create a Service Principal for login access
 $sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
