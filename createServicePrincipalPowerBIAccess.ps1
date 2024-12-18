@@ -1,7 +1,7 @@
 Param($pservicePrincipal)
 
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-Update-Module -Name Az -Force
+Update-Module -Name Az -Force -WarningAction SilentlyContinue
 
 
 #Create a Service Principal for login access
