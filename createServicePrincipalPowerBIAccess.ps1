@@ -6,8 +6,7 @@ Update-Module -Name Az -Force -WarningAction SilentlyContinue
 #Create a Service Principal for login access
 $sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
 
-Write-Host "Service Principal Created:"
-Write-Output $sp
+Write-Host "Service Principal Created"
 	  
 #PowerBI Capacity.Read.All
 Add-AzADAppPermission -PermissionId '76e2ebd5-0dfb-4a5b-93c7-ed89e0362834' -ApplicationId $sp.AppID -ApiId '00000009-0000-0000-c000-000000000000'
