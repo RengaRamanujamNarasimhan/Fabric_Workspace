@@ -1,6 +1,8 @@
 Param($pservicePrincipal)
 
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+
 Import-Module Az.Resources -Force
 Import-Module Az.Account -Force
 
