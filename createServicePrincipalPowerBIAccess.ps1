@@ -1,5 +1,7 @@
 Param($pservicePrincipal)
 
+Set-AzContext -Subscription b8f7e9c4-97e2-4f4a-8c39-388b5664a51b
+
 #Create a Service Principal for login access
 $sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
 
