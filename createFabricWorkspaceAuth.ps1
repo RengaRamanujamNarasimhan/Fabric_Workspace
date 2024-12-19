@@ -46,5 +46,3 @@ Set-PowerBIWorkspace -Scope Organization -Id $wspID -CapacityId $cpID
 
 Write-Output $wspID
 
-#Remove the App registration
-Remove-AzADServicePrincipal -ObjectId $sp.ID
