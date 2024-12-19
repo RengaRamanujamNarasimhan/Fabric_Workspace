@@ -1,6 +1,6 @@
 Param($pservicePrincipal)
 
-Connect-AzAccount
+Connect-AzAccount -UseDeviceAuthentication
 
 #Create a Service Principal for login access
 $sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
