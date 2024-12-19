@@ -1,20 +1,18 @@
-Param($pcpName,$pwspName,$pservicePrincipal)
+Param($pcpName,$pwspName,$pkey,$pclientID,$ptenantID)
+
+
+#Get the Key/TenantID and ClientID from the service Principal
+$key = $pkey
+$ClientID = $pclientID
+$SecurePassword = $key | ConvertTo-SecureString -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $ClientID, $SecurePassword
+$tenantID = $ptenantID
 
 #Install the required Modules
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
 Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
 Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
-
-#Create a Service Principal for login access
-$sp = New-AzADServicePrincipal -DisplayName $pservicePrincipal
-
-#Get the Key/TenantID and ClientID from the service Principal
-$key = $sp.PasswordCredentials.SecretText
-$ClientID = $sp.AppID
-$SecurePassword = $key | ConvertTo-SecureString -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $ClientID, $SecurePassword
-$tenantID = $sp.AppOwnerOrganizationId
 
 #Connect to PowerBI Services using the Service Principal
 Connect-PowerBIServiceAccount -Tenant $tenantID -ServicePrincipal -Credential $cred -WarningAction SilentlyContinue
