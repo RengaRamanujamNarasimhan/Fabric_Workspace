@@ -23,4 +23,12 @@ Add-AzADAppPermission -PermissionId '445002fb-a6f2-4dc1-a81e-4254a111cd29' -Appl
 Add-AzADAppPermission -PermissionId 'e1fe6dd8-ba31-4d61-89e7-88639da4683d' -ApplicationId $sp.AppID -ApiId '00000003-0000-0000-c000-000000000000'
 
 Write-Host "Service Principal Permissions applied"
-Write-Output $sp.ID
+#Service Principal ID
+Write-Output $sp.ID 
+
+#Get the Secret key to be provided as an input for the Wrkspace creation
+$sp.PasswordCredentials.SecretText
+
+#Get the Client ID to be provided as an input for the Wrkspace creation
+$sp.AppId
+
