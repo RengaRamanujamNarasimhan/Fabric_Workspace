@@ -1,4 +1,4 @@
-Param($pcpName,$pwspName,$pkey,$pclientID,$ptenantID)
+Param($pcpName,$pwspName,$pkey,$pclientID,$ptenantID,$puserAdmin)
 
 
 #Get the Key/TenantID and ClientID from the service Principal
@@ -10,9 +10,8 @@ $tenantID = $ptenantID
 
 #Install the required Modules
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-
 Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
+
 Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
 #Connect to PowerBI Services using the Service Principal
@@ -42,7 +41,45 @@ New-PowerBIWorkspace -Name $wspName
 $wspID = (Get-PowerBIWorkspace -Name $wspName | Select-Object -ExpandProperty Id).ToString()
 
 #assign the capacity to the workspace
-Set-PowerBIWorkspace -Scope Organization -Id $wspID -CapacityId $cpID
 
-Write-Output $wspID
+#JSON body which contains the capacity ID to be assigned
+$body = @{
+capacityId = $cpID
+}
 
+#Convert the above JSON body to JSON format
+$JsonBody = $body | ConvertTo-Json
+
+#REST API URI to assign capacity to a workspace pass the workspaceID to the group
+$Uri = https://api.powerbi.com/v1.0/myorg/groups/$wspID/AssignToCapacity
+
+#Invoke REST API call using powershell cmd
+Invoke-PowerBIRestMethod -Url $uri -Method Post -Body $jsonBody
+
+#Get the details of the workspace after assigning the capacity
+$wsp = Get-PowerBIWorkspace -Name $wspName
+
+#Write output to screen to verify the Capacity ID
+Write-Output $wsp
+
+#JSON body for assigning user to a workspace. Provide the user id and role
+$body = @{
+  "identifier" = $puserAdmin
+  "groupUserAccessRight"= "Admin"
+  "principalType"= "User"
+}
+
+#Convert the above JSON body to JSON format
+$JsonBody = $body | ConvertTo-Json
+
+#REST API URI to assign user to a workspace pass the workspaceID to the group
+$Uri = https://api.powerbi.com/v1.0/myorg/groups/$wspID/users
+
+#Invoke REST API call using powershell cmd
+Invoke-PowerBIRestMethod -Url $uri -Method Post -Body $jsonBody
+
+#Get the details of the workspace after assigning the capacity
+$wsp = Get-PowerBIWorkspace -Name $wspName
+
+#Write output to screen to verify the Capacity ID
+Write-Output $wsp
