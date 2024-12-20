@@ -10,10 +10,10 @@ Write-Host "Service Principal Created"
 #######################################################################
 ####Provide below API Permission to access the PowerBI Services    ####
 ##These permissions are required for the service Principal to        ##
-#        Connect to PowerBI workspace using Service Principal		  # 
-#		 Fetch the Fabric Capacity available						  # 
-#		 Create a workspace in the Fabric Platform				      #
-#		 Assign user access to workspace using ServicePrincipal       #
+#        Connect to PowerBI workspace using Service Principal	      # 
+#		 Fetch the Fabric Capacity available		      # 
+#		 Create a workspace in the Fabric Platform	      #
+#		 Assign user access to workspace using ServicePrincipal#
 #######################################################################
 	  
 #PowerBI Capacity.ReadWrite.All
