@@ -57,7 +57,7 @@ $sp.AppId
 #Go to Api Permission and Provide Grant Admin Consent to permissions applied
 #Go to Expose an API and Add application URI
 #Create a New Security Group and add the Service Principal as an Owner and Member in that Group
-#Assign the Security group with Owner permission for the resource group in which fabric will be deployed
+#Assign the Security group/ServicePrincipal with Owner permission for the resource group in which fabric will be deployed
 
 #######     Key Notes: Other activities to be done in app.fabric.microsoft.com as follows         #######
 
