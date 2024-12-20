@@ -10,8 +10,9 @@ $tenantID = $ptenantID
 
 #Install the required Modules
 Install-Module -Name Az -Repository PSGallery -Force -WarningAction SilentlyContinue
-Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
+Install-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 Import-Module -Name MicrosoftPowerBIMgmt -WarningAction SilentlyContinue
 
 #Connect to PowerBI Services using the Service Principal
