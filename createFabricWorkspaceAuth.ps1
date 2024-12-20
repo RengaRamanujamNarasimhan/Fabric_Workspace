@@ -52,7 +52,7 @@ capacityId = $cpID
 $JsonBody = $body | ConvertTo-Json
 
 #REST API URI to assign capacity to a workspace pass the workspaceID to the group
-$Uri = 'https://api.powerbi.com/v1.0/myorg/groups/$wspID/AssignToCapacity'
+$Uri = 'https://api.powerbi.com/v1.0/myorg/groups/'+$wspID+'/AssignToCapacity'
 
 #Invoke REST API call using powershell cmd
 Invoke-PowerBIRestMethod -Url $uri -Method Post -Body $jsonBody
@@ -74,7 +74,7 @@ $body = @{
 $JsonBody = $body | ConvertTo-Json
 
 #REST API URI to assign user to a workspace pass the workspaceID to the group
-$Uri = 'https://api.powerbi.com/v1.0/myorg/groups/$wspID/users'
+$Uri = 'https://api.powerbi.com/v1.0/myorg/groups/'+$wspID+'/users'
 
 #Invoke REST API call using powershell cmd
 Invoke-PowerBIRestMethod -Url $uri -Method Post -Body $jsonBody
