@@ -49,7 +49,7 @@ $sp.PasswordCredentials.SecretText
 #Get the Client ID to be provided as an input for the Workspace creation while registering for Fabric
 $sp.AppId
 
-#################################################################################################
+#########################################################################################################
 
 #######       Key Notes: Other activities to be done in Azure Portal as follows  		  #######
 
@@ -58,4 +58,17 @@ $sp.AppId
 #Go to Expose an API and Add application URI
 #Create a New Security Group and add the Service Principal as an Owner and Member in that Group
 #Assign the Security group with Owner permission for the resource group in which fabric will be deployed
-#########################################################################################################
+
+#######     Key Notes: Other activities to be done in app.fabric.microsoft.com as follows         #######
+
+#Login into app.fabric.microsoft.com as the Fabric administrator
+#Go to Admin portal in the Settings and Navigate to Tenant Settings
+
+#Enable access to Below Settings (For time being enable this access for Security Group created in above step)
+#	Service principals can use Fabric APIs 
+#	Allow service principals to create and use profiles
+#	Service principals can access read-only admin APIs
+#	Embed content in apps
+
+
+##############################################################################################################
